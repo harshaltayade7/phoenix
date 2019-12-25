@@ -1,0 +1,26 @@
+{
+  "name": "phoenix",
+  "version": "1.0.0",
+  "description": "introducing amzaing stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshaltayade7/phoenix.git"
+  },
+  "author": "Harshal Tayade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshaltayade7/phoenix/issues"
+  },
+  "homepage": "https://github.com/harshaltayade7/phoenix#readme",
+  "devDependencies": {
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
