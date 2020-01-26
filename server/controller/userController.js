@@ -46,6 +46,8 @@ showUsers = (req, res) => {
 }
 
 loginUser = (req, res) => {
+    debugger
+    console.log("login----.....")
     MongoClient.connect('mongodb://admin:admin123@ds018538.mlab.com:18538/project', {useUnifiedTopology: true, native_parser:true},function(err, client) {
         if (err) return console.log(err)
         const db = client.db('project');
