@@ -1,12 +1,10 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
-import Main from './components/main';
 import api from './api/index';
 
 const handleIncludeMovie = async () => {
-  // await api.showUsers().then(res => {
-  //     window.alert('Movie inserted successfully');
-  // })
+    // await api.showUsers().then(res => {
+    //   console.log("users are ...")
+    // })
   // console.log("window.location.href",window.location.href)
   
   if(window.location.href.length >=24) {
@@ -37,5 +35,3 @@ function App() {
 }
 
 export default App;
-
-// npm install styled-components react-table react-router-dom axios bootstrap --save

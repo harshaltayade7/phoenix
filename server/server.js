@@ -22,8 +22,5 @@ app.get('/', function(req, res) {
 app.get('/createUser', createUser);
 app.get('/showUsers', showUsers);
 app.get('/loginUser', loginUser);
-app.get('/homepage', function(req, res) {
-    res.sendFile(path.join(__dirname + '/homepage.html'));
-})
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
