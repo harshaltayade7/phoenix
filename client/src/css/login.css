@@ -1,0 +1,39 @@
+.loginForm {
+    width: 400px;
+    height: 400px;
+    background-color: #2f3f41;
+    border-radius: 10% 10% 10% 10%;
+    left: 20%;
+    position: relative;
+    top: 50px;
+}
+.loginForm .formContent {
+    position: relative;
+    top: 30%;
+}
+
+.loginForm .inputField {
+    float: right;
+    margin-right: 13%;
+    background-color: #1b3440;
+    color: white;
+}
+
+.loginForm .submitBtn {
+    left: 15%;
+    margin-top: 20px;
+    position: relative;
+    background-color: #1b3440;
+}
+
+.loginForm .inputLableField {
+    float: left;
+    margin-left: 15%;
+    color: #83c0de;
+    font-weight: 600;
+
+}
+
+body {
+    background-color: #283136;
+}

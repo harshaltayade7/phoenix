@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../api/index';
+require("../css/login.css")
 
 export default class Login extends React.Component {
     constructor(props){
@@ -45,13 +46,19 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
-                {/* <form method="GET"> */}
-                <input type="text" placeholder="harshal" name="username" value={this.state.username} onChange={this.handleInput}/>
-                <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleInput}/>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button>
-                {/* </form> */}
-            </React.Fragment>
+            <div className="loginForm">
+                <div className="formContent">
+                    <div>
+                        <div className="inputLableField">User name </div>
+                        <input className="inputField"  type="text" placeholder="harshal" name="username" value={this.state.username} onChange={this.handleInput}/>
+                    </div>
+                    <div>
+                        <div className="inputLableField">Password</div>
+                        <input  className="inputField"  type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleInput}/>
+                    </div>
+                    <button type="submit" onClick={this.handleSubmit} className="submitBtn">Submit</button>
+                </div>
+            </div>
 
         )
     }
