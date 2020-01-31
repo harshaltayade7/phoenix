@@ -1,6 +1,7 @@
-.loginForm {
-    width: 300px;
-    height: 400px;
+
+.signUpForm {
+    width: 400px;
+    height: 500px;
     background-color: white;
     border-radius: 10% 10% 10% 10%;
     position: relative;
@@ -9,52 +10,53 @@
 }
 
 
-.loginForm .login_logo {
+.signUpForm .signup_logo {
 	background-image: url('../assets/login_logo.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100px;
-    width: 100px;
+    height: 61px;
+    width: 100%;
     top: 78px;
-    left: 100px;
     position: absolute;
-    border-radius: 25%;
 }
 
-.loginForm .formContent {
+.signUpForm .formContent {
     text-align: center;
 }
 
-.loginForm .inputField1 {
+.signUpForm .inputField1 {
     top: 150px;
     position: relative;
     border: none;
     border-bottom: 2px solid #7fbddc;
 }
 
-.loginForm .inputField2 {
+.signUpForm .inputField2 {
     top: 160px;
     position: relative;
     border: none;
     border-bottom: 2px solid #7fbddc;
   }
 
-.loginForm .submitBtn {
+.signUpForm .submitBtn {
     position: absolute;
     left: 21%;
     top: 73%;
 }
 
-.loginForm .submitBtn button {
+.signUpForm .submitBtn button {
     background-color: #1c3133;
     color: white;
     width: 172px;
 }
 
-.loginForm .dont_have_accnt {
+.signUpForm .dont_have_accnt {
     position: absolute;
     top: 90%;
-    left: 43px;
+    left: 69px;
     display: table;     
+}
+body {
+    background-color:#44242414;
 }

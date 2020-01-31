@@ -1,0 +1,21 @@
+body {
+    background-color:#44242414;
+}
+
+.welcome_msg {
+    margin-bottom: 10px;
+    position: relative; 
+    width: 100%;
+    margin-top: 33px;
+    font-size: 25px;
+    font-family: monospace;
+}
+
+.togglePage {
+    display: table-cell;
+    padding-left: 6px; 
+}
+
+.togglePage:hover {
+    cursor: pointer;
+}
