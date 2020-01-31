@@ -4,7 +4,7 @@ import Login from './componets/Login';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{textAlign:"-webkit-center"}}>
       <Login/>
     </div>
   );

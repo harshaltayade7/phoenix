@@ -46,7 +46,6 @@ showUsers = (req, res) => {
 }
 
 loginUser = (req, res) => {
-    debugger
     console.log("login----.....")
     MongoClient.connect('mongodb://admin:admin123@ds018538.mlab.com:18538/project', {useUnifiedTopology: true, native_parser:true},function(err, client) {
         if (err) return console.log(err)
@@ -58,10 +57,10 @@ loginUser = (req, res) => {
             console.log("result---->",results)
             if(err){
                 console.log(err);
-                res.send(err);
+             return  res.send(err);
             } else if(results[0] && results[0].name == req.query.name) {
                 console.log("user found, proceed on new page");
-                res.redirect("/homepage")
+              return  res.send("success");
             } else {
                 console.log("wrong credentials OR create your account");
                 return res.send("wrong credentials")    

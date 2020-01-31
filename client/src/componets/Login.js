@@ -48,15 +48,16 @@ export default class Login extends React.Component {
         return (
             <div className="loginForm">
                 <div className="formContent">
-                    <div>
-                        <div className="inputLableField">User name </div>
-                        <input className="inputField"  type="text" placeholder="harshal" name="username" value={this.state.username} onChange={this.handleInput}/>
+                    <div className="welcome_msg"> <b>Welcome</b></div>
+                    <div className="login_logo"/>
+                    <input className="inputField1"  type="text" placeholder="harshal" name="username" value={this.state.username} onChange={this.handleInput}/>
+                    <input  className="inputField2"  type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleInput}/>
+                    <div className="submitBtn">
+                    <button type="submit" onClick={this.handleSubmit}>Submit</button>
                     </div>
-                    <div>
-                        <div className="inputLableField">Password</div>
-                        <input  className="inputField"  type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleInput}/>
-                    </div>
-                    <button type="submit" onClick={this.handleSubmit} className="submitBtn">Submit</button>
+                </div>
+                <div className="dont_have_accnt">
+                  Don't have an account ? Sign Up
                 </div>
             </div>
 
