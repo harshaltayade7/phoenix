@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './componets/Login';
 import Signup from './componets/Signup';
+import Home from './componets/Home';
 import './css/global.css';
 
 
@@ -10,18 +11,22 @@ export default class App extends React.Component {
     this.state = {
       component: 'Sign In',
       isSignIn: false,
+      isMessage: true,
     }
   }
 
-  updateComponent = ({text = 'Sign In', isLoggedIn = false})=> {
+  updateComponent = (param)=> {
     this.setState({
-      component: text, 
-      isSignIn: isLoggedIn ? false: true
+      component: param.name, 
+      isSignIn: param.isLoggedIn
     });
   }
 
 
   getComponent() {
+    if(this.state.isSignIn){
+      return <Home />
+    }
     if (this.state.component == 'Sign In' && !this.state.isSignIn) {
       return <Login updateComponent = {this.updateComponent} />;
     }

@@ -1,0 +1,11 @@
+.message {
+    color: #e64715;
+    position: relative;
+}
+
+.loginForm .message {
+    top: 54%;
+}
+.signUpForm .message {
+    top: 70%;
+}
