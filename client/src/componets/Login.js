@@ -10,7 +10,6 @@ export default class Login extends BaseComponent {
         this.state = {
             username: '',
             password: '',
-            component: 'Sign Up',
             isMessage: true,
             message: '',
             isLoading: false,
@@ -22,11 +21,11 @@ export default class Login extends BaseComponent {
 
     handleSubmit = async (e) => {   
         if(this.state.username.length>=5) {
-            this.setState({message: 'Sining In', isMessage: true, isLoading: true});
+            this.setState({message: 'Signing In', isMessage: true, isLoading: true});
             await api.loginUser(this.state.username).then(res => {
             if(res.data == 'success') {
                 this.setState({message: 'Login Successfull', isLoading: false});
-                this.props.updateComponent({isLoggedIn: true});
+                this.props.updateComponent({isSignIn: true});
             } else {
                 this.setState({message: 'Wrong Credentials !', isLoading: false});
             }

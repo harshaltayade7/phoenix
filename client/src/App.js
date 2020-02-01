@@ -10,15 +10,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       component: 'Sign In',
-      isSignIn: false,
-      isMessage: true,
+      isSignIn: false
     }
   }
 
   updateComponent = (param)=> {
     this.setState({
       component: param.name, 
-      isSignIn: param.isLoggedIn
+      isSignIn: param.isSignIn
     });
   }
 
