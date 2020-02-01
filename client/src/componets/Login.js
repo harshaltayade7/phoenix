@@ -12,7 +12,8 @@ export default class Login extends BaseComponent {
             password: '',
             component: 'Sign Up',
             isMessage: true,
-            message: 'Sign In'
+            message: '',
+            isLoading: false,
         }
 
         this.toggleComponent = this.toggleComponent.bind(this);
@@ -21,12 +22,13 @@ export default class Login extends BaseComponent {
 
     handleSubmit = async (e) => {   
         if(this.state.username.length>=5) {
+            this.setState({message: 'Sining In', isMessage: true, isLoading: true});
             await api.loginUser(this.state.username).then(res => {
             if(res.data == 'success') {
-                this.setState({message: 'Login Successfull', isMessage: true});
+                this.setState({message: 'Login Successfull', isLoading: false});
                 this.props.updateComponent({isLoggedIn: true});
             } else {
-                this.setState({message: 'Wrong Credentials !', isMessage: true});
+                this.setState({message: 'Wrong Credentials !', isLoading: false});
             }
         })
      }
@@ -49,7 +51,7 @@ export default class Login extends BaseComponent {
 
     messageUser() {
         if(this.state.isMessage) {
-          return <Message message={this.state.message} styleObj={{color:'blue'}}/>;    
+          return <Message message={this.state.message} isLoading={this.state.isLoading} styleObj={{color:'blue'}}/>;    
         }
     }
 
