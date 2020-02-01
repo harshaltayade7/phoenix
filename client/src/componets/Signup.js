@@ -26,7 +26,8 @@ export default class Signup extends BaseComponent {
       this.setState({isLoading: true, message: 'Validating your data...'});
       const validate = this.validateForm();
       if(validate.length == 0) {
-        await api.createUser(this.state.username).then(res => {
+          const { username, email, password1, password2} = this.state.formField;
+        await api.createUser({name:username, email, password:password1}).then(res => {
             console.log(res.data,'---------->>>>>')
             let message='';
             if(res.data == 'user found') {

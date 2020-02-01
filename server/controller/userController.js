@@ -8,8 +8,8 @@ createUser = (req, res) => {
 
         console.log("req.a-------->",req.query);
         
-        db.collection('user-data').find({name: req.query.name}).toArray(function(err, results){
-            if(err){
+        db.collection('user-data').find({name: req.query.name, email: req.query.email}).toArray(function(err, results){
+            if(err){ 
                 console.log(err);
                 res.send(err);
             } else if(req.query.name && results[0] && results[0].name == req.query.name) {
@@ -46,14 +46,15 @@ showUsers = (req, res) => {
 }
 
 loginUser = (req, res) => {
-    console.log("login----.....")
+    console.log("login----.....>>>>", req.query)
     MongoClient.connect('mongodb://admin:admin123@ds018538.mlab.com:18538/project', {useUnifiedTopology: true, native_parser:true},function(err, client) {
         if (err) return console.log(err)
         const db = client.db('project');
 
+
         console.log("user name", req.query.name)
         
-        db.collection('user-data').find({name: req.query.name}).toArray(function(err, results){
+        db.collection('user-data').find({name: req.query.name, password: req.query.password}).toArray(function(err, results){
             console.log("result---->",results)
             if(err){
                 console.log(err);

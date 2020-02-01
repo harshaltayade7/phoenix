@@ -8,7 +8,7 @@ const showUsers = require('./controller/userController').showUsers;
 const loginUser = require('./controller/userController').loginUser;
 
 const app = express()
-const apiPort = 4000
+const apiPort = 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -22,5 +22,6 @@ app.get('/', function(req, res) {
 app.get('/createUser', createUser);
 app.get('/showUsers', showUsers);
 app.get('/loginUser', loginUser);
+
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

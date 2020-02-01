@@ -22,7 +22,8 @@ export default class Login extends BaseComponent {
     handleSubmit = async (e) => {   
         if(this.state.username.length>=5) {
             this.setState({message: 'Signing In', isMessage: true, isLoading: true});
-            await api.loginUser(this.state.username).then(res => {
+            const { username, password } = this.state;
+            await api.loginUser({name: username, password: password}).then(res => {
             if(res.data == 'success') {
                 this.setState({message: 'Login Successfull', isLoading: false});
                 this.props.updateComponent({isSignIn: true});
