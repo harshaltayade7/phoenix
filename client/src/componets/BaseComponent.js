@@ -12,5 +12,4 @@ export default class BaseComponent extends React.Component {
           console.log("users are ...",res)
         });
     }
-    
 } 

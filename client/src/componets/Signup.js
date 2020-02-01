@@ -12,7 +12,8 @@ export default class Signup extends BaseComponent {
             username: '',
             password: '',
             isMessage: true,
-            message: 'Sign Up'
+            message: 'Sign Up',
+            isLoading: false
         }
         this.toggleComponent = this.toggleComponent.bind(this);
     }
@@ -43,7 +44,7 @@ export default class Signup extends BaseComponent {
 
     messageUser() {
         if(this.state.isMessage) {
-          return <Message message={this.state.message} styleObj={{color:'red'}}/>;    
+          return <Message message={this.state.message} isLoading={this.state.isLoading} styleObj={{color:'red'}}/>;    
         }
     }
 

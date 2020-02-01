@@ -51,7 +51,7 @@ export default class Login extends BaseComponent {
 
     messageUser() {
         if(this.state.isMessage) {
-          return <Message message={this.state.message} isLoading={this.state.isLoading} styleObj={{color:'blue'}}/>;    
+          return <Message message={this.state.message} isLoading={this.state.isLoading} styleObj={{color:'red'}}/>;    
         }
     }
 
