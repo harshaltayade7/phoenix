@@ -14,7 +14,7 @@ createUser = (req, res) => {
                 res.send(err);
             } else if(req.query.name && results[0] && results[0].name == req.query.name) {
                 console.log("user found");
-                res.send("user already found")
+                res.send("user found")
             } else {
                 if(!req.query.name) {
                     res.send("use the proper name")

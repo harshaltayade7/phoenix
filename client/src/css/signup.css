@@ -1,7 +1,7 @@
 
 .signUpForm {
     width: 400px;
-    height: 500px;
+    height: 600px;
     background-color: white;
     border-radius: 10% 10% 10% 10%;
     position: relative;
@@ -22,40 +22,42 @@
 }
 
 .signUpForm .formContent {
-    text-align: center;
+    top: 176px;
+    position: absolute;
+    display: grid;
+    left: 50px;
 }
 
-.signUpForm .inputField1 {
-    top: 150px;
-    position: relative;
-    border: none;
-    border-bottom: 2px solid #7fbddc;
+.signUpForm .lableField {
+    text-align: left;
 }
 
-.signUpForm .inputField2 {
-    top: 160px;
+.signUpForm .inputField {
     position: relative;
-    border: none;
-    border-bottom: 2px solid #7fbddc;
-  }
+    width: 300px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 
 .signUpForm .submitBtn {
-    position: absolute;
-    left: 21%;
-    top: 73%;
+    width: 100%;
 }
 
 .signUpForm .submitBtn button {
-    background-color: #1c3133;
-    color: white;
-    width: 172px;
+    width: 100%;
+    background-color: #23cbe0;
+    height: 39px;
+    font-size: 20px;
+    font-style: bold;
+    font-weight: bolder;
+
 }
 
 .signUpForm .dont_have_accnt {
-    position: absolute;
-    top: 90%;
-    left: 69px;
-    display: table;     
+    display: -webkit-box;
+    margin-top: 35px;
+    text-align: left;
 }
 body {
     background-color:#44242414;

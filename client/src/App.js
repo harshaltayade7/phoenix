@@ -9,7 +9,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      component: 'Sign In',
+      component: 'Sign Up',
       isSignIn: false
     }
   }
