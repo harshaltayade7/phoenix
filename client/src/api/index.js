@@ -5,9 +5,11 @@ const api = axios.create({
 })
 
 
-export const createUser = payload => api.get(`/createUser?name=${payload.name}&email=${payload.email}&password=${payload.password}`)
+export const createUser = payload => api.post('/createUser',
+   payload
+  )
 export const showUsers = () => api.get(`/showUsers`)
-export const loginUser = payload => api.get(`/loginUser?name=${payload.name}&password=${payload.password}`)
+export const loginUser = payload => api.post('/loginUser',payload)
 
 const apis = {
     createUser,
