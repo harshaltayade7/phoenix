@@ -37,9 +37,8 @@
 .gamebody {
     width: 100%;
     position: relative;
-    background-color: #072528;
     color: black;
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
 }
@@ -48,9 +47,13 @@
     background-repeat: no-repeat;
     height: 300px;
     margin-right: 20px;
-    width: 343px;
+    width: 351px;
     float: left;
     margin-left: 20px;
+    border-radius: 50%;
+}
+.game:hover{
+    cursor: pointer;
 }
 .table_tennis {
     background-image: url('../assets/table_tennis.jpeg');
@@ -59,6 +62,14 @@
 .talking_parrot {
     background-image: url('../assets/parrot.jpeg');
     display: table-column-group;
+}
+.state_playing {
+    width: 100%;
+    position: relative;
+    color: black;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 500px) {
