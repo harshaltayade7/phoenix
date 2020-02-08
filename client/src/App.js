@@ -23,9 +23,9 @@ export default class App extends React.Component {
 
 
   getComponent() {
-    if(this.state.isSignIn){
+    // if(this.state.isSignIn){
       return <Home />
-    }
+    // }
     if (this.state.component == 'Sign In' && !this.state.isSignIn) {
       return <Login updateComponent = {this.updateComponent} />;
     }

@@ -1,11 +1,9 @@
 import React from 'react';
-import View from '../games/View'
 
-export default class Home extends React.Component {
+export default class Game extends React.Component {
     render() {
         return (
             <div>
-                <View/>
             </div>
         )
     }
