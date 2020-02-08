@@ -1,7 +1,30 @@
 import React from 'react';
 import './Game.css'
 import * as createjs from 'createjs-module';
-import _ from 'lodash'
+import _ from 'lodash';
+
+window.createjs= createjs;
+
+const stage = {
+    width: 800,
+    height: 500,
+}
+
+class PlayerBall extends createjs.Container {
+    constructor(props) {
+        super(props);
+        this.drawBall();
+    }
+
+    drawBall() {
+        const playerBall = new createjs.Shape();
+        playerBall.graphics.beginFill("white").drawCircle(0,0,30);
+        this.x = (stage.width / 2)-10;
+        this.y = (stage.height/2) - 15;
+        this.cursor = "grabbing";
+        this.addChild(playerBall);
+    }
+}
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -19,61 +42,40 @@ export default class Game extends React.Component {
     }
 
     loadGame() {
-        this.drawGraphics();
-        this.addListeners();
+        this.container = new createjs.Container();
+        this.container = new createjs.Container();
+        this.stage.addChild(this.container);
+        for(let i=0;i<=10;i++){
+            this.drawGraphics();
+
+        }
     }
 
     drawGraphics(){
-        this.container = new createjs.Container();
-        const playerBall = new createjs.Shape();
-        
-        this.playerBall = new createjs.Container();
-        playerBall.graphics.beginFill("red").drawCircle(0,0,30);
-        playerBall.x = this.stage.canvas.width/2;
-        playerBall.y = this.stage.canvas.height/2 - 15;
-        playerBall.cursor = "grabbing";
-        this.playerBall.addChild(playerBall)
-        this.container.addChild(this.playerBall);
-        this.stage.addChild(this.container);
-
-        this.drawWhiteBall();
-    }
-
-    drawWhiteBall() {
-        this.whiteBall = new createjs.Container();
-        const whiteBall = new createjs.Shape();
-
-        whiteBall.graphics.beginFill("yellow").drawCircle(0,0,30);
-        whiteBall.x = Math.floor(Math.random() * 700) + 15;
-        whiteBall.y = Math.floor(Math.random()* 500) + 15;
-
-        console.log(whiteBall.x);
-        console.log(whiteBall.y)
-        this.whiteBall.addChild(whiteBall);
-        this.container.addChild(this.whiteBall);
+        let ball = new PlayerBall();
+        this.addListeners(ball);
+        this.container.addChild(ball);
+        createjs.Tween.get(ball).to({x: 30+ Math.floor(Math.random() * 700),y: Math.floor(Math.random() * 400) +30},1000)
     }
 
     handleTick=()=> {  
         this.stage.update();
     }
 
-    addListeners() {
-        this.playerBall.addEventListener('mousedown',this.mouseDownCircle);
-        this.playerBall.addEventListener('mouseup',()=>{
-            this.playerBall.removeEventListener('pressmove',this.pressMoveCircle);
-        });
+    addListeners(ball) {
+        ball.addEventListener('mousedown',this.mouseDownCircle);
+        ball.addEventListener('pressmove',this.pressMoveCircle);
     }
 
     mouseDownCircle(e) {
         const { stageX, stageY} = e;
         this.offset = { x:e.currentTarget.x-stageX, y:e.currentTarget.y-stageY};
-        this.playerBall.addEventListener('pressmove',this.pressMoveCircle);
     }
 
     pressMoveCircle(e) {
         const {x, y} = this.offset;
-        this.playerBall.x = e.stageX+x;
-        this.playerBall.y = e.stageY+y;
+        e.currentTarget.x = e.stageX+x;
+        e.currentTarget.y = e.stageY+y;
         this.stage.update();
     }
 
