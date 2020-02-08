@@ -13,8 +13,8 @@ export default class View extends React.Component {
         <div className="game_wrapper">
             <div className='title_wrapper'>
                 <div className="logo_wrapper"><div className="logo"></div></div>
-                <div className="quote">No Reason To Not Play</div>
             </div>
+            <div className="quote">No Reason To Not Play</div>
             <div className="gamebody">
                 <div className="table_tennis game">
                     <Table_Tennis/>
