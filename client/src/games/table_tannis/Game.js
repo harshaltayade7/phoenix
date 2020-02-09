@@ -2,6 +2,7 @@ import React from 'react';
 import './Game.css'
 import * as createjs from 'createjs-module';
 import _ from 'lodash';
+import Popup from '../../componets/Popup';
 
 window.createjs= createjs;
 
@@ -30,10 +31,19 @@ export default class Game extends React.Component {
     constructor(props) {
         super(props);
         window.display = this;
-        _.bindAll(this,['mouseDownCircle','pressMoveCircle'])
+        this.state = { showPopup: true, message: "Start Game", score: 0 };  
         createjs.Ticker.addEventListener("tick", this.handleTick);
         this._corner = null;
+        this._timer = null;
+        this.timerRef = React.createRef();
+        _.bindAll(this,['mouseDownCircle','pressMoveCircle'])
     }
+    togglePopup() {  
+        this.setState({  
+             showPopup: !this.state.showPopup  
+        });  
+        this.startGame();
+    }  
     componentDidMount() {
         const canvas = document.querySelector('canvas');
         this.stage = new createjs.Stage(canvas);
@@ -47,9 +57,20 @@ export default class Game extends React.Component {
         this.container = new createjs.Container();
         this.stage.addChild(this.container);
         this.drawCorners();
+    }
+    
+    startGame() {
+        this.startTimer();
         for(let i=0;i<=10;i++){
-            this.drawGraphics();
+            this.drawWhiteBalls();
         }
+    }
+
+    startTimer() {
+    }
+
+    stopTimer() {
+
     }
 
     drawCorners(radius) {
@@ -84,7 +105,7 @@ export default class Game extends React.Component {
         this.container.addChild(this.whiteBalls);
     }
 
-    drawGraphics(){
+    drawWhiteBalls(){
         let ball = new PlayerBall();
         this.addListeners(ball);
         this.whiteBalls.addChild(ball);
@@ -146,6 +167,16 @@ export default class Game extends React.Component {
         return (
             <div className='game_table'>
                 <canvas width="800px" height="500px" style={{backgroundColor: "#4d5151"}}></canvas>
+                <div className="popup_wrapper">  
+
+                {this.state.showPopup ?  
+                <Popup  
+                        text={this.state.message}  
+                        closePopup={this.togglePopup.bind(this)}  
+                />      
+                : null  
+                }  
+                </div>  
             </div>
         )
     }
