@@ -11,14 +11,14 @@ const stage = {
 }
 
 class PlayerBall extends createjs.Container {
-    constructor(props) {
+    constructor(radius, color, ...props) {
         super(props);
-        this.drawBall();
+        this.drawBall(radius, color);
     }
 
-    drawBall() {
+    drawBall(radius=30, color="white") {
         const playerBall = new createjs.Shape();
-        playerBall.graphics.beginFill("white").drawCircle(0,0,30);
+        playerBall.graphics.beginFill(color).drawCircle(0,0,radius);
         this.x = (stage.width / 2)-10;
         this.y = (stage.height/2) - 15;
         this.cursor = "grabbing";
@@ -32,6 +32,7 @@ export default class Game extends React.Component {
         window.display = this;
         _.bindAll(this,['mouseDownCircle','pressMoveCircle'])
         createjs.Ticker.addEventListener("tick", this.handleTick);
+        this._corner = null;
     }
     componentDidMount() {
         const canvas = document.querySelector('canvas');
@@ -45,16 +46,48 @@ export default class Game extends React.Component {
         this.container = new createjs.Container();
         this.container = new createjs.Container();
         this.stage.addChild(this.container);
+        this.drawCorners();
         for(let i=0;i<=10;i++){
             this.drawGraphics();
-
         }
+    }
+
+    drawCorners(radius) {
+        let topLeft, topRight, bottomLeft, bottomRight;
+
+        topLeft = new PlayerBall(90, 'black');
+        topRight = new PlayerBall(90, 'black');
+        bottomLeft = new PlayerBall(90, 'black');
+        bottomRight = new PlayerBall(90, 'black');
+
+        this.corners = new createjs.Container();
+        this.whiteBalls = new createjs.Container();
+
+        topLeft.x = 0;
+        topLeft.y = 0;
+
+        topRight.x = 800;
+        topRight.y = 0;
+
+        bottomLeft.x = 0;
+        bottomLeft.y = 500;
+
+        bottomRight.x = 800;
+        bottomRight.y = 500;
+
+        this.corners.addChild(topLeft)
+        this.corners.addChild(topRight)
+        this.corners.addChild(bottomLeft)
+        this.corners.addChild(bottomRight)
+
+        this.container.addChild(this.corners);
+        this.container.addChild(this.whiteBalls);
     }
 
     drawGraphics(){
         let ball = new PlayerBall();
         this.addListeners(ball);
-        this.container.addChild(ball);
+        this.whiteBalls.addChild(ball);
         createjs.Tween.get(ball).to({x: 30+ Math.floor(Math.random() * 700),y: Math.floor(Math.random() * 400) +30},1000)
     }
 
@@ -76,7 +109,37 @@ export default class Game extends React.Component {
         const {x, y} = this.offset;
         e.currentTarget.x = e.stageX+x;
         e.currentTarget.y = e.stageY+y;
+        this.checkArea(e.currentTarget);
         this.stage.update();
+    }
+
+    checkArea(target) {
+        const corners = this.corners.children;
+        const radius = 90;
+        let isInside = true;
+            if(target.x < corners[0].x + radius / 2 && target.y < corners[0].y+radius){
+                this._corner = corners[0];
+            } else if(target.x > corners[1].x - radius/2 && target.y < radius/2){
+                this._corner = corners[1];
+            } else if(target.x < radius / 2 && target.y > corners[2].y - radius/2){
+                this._corner = corners[2];
+            } else if(target.x > corners[3].x - radius/2 && target.y > corners[3].y - radius/2){
+                this._corner = corners[3];
+            } else {
+                isInside = false;
+                target.alpha = 1;
+            }
+            if(isInside) {
+                target.alpha=0.5;
+                console.log(this._corner)
+                target.children[0].graphics._fill.style="red";
+                this._corner.children[0].graphics._fill.style="yellow";
+                target.removeAllEventListeners();
+                target.parent.removeChild(target);
+                setTimeout(()=>{
+                    this._corner.children[0].graphics._fill.style="black";
+                },500)
+            }
     }
 
     render() {
